@@ -1,0 +1,20 @@
+﻿Install-Package Microsoft.AspNet.WebApi.OwinSelfHost -Pre
+
+--Above package will add following
+--The Microsoft.AspNet.WebApi.OwinSelfHost Nuget package installs a few new references into our project, among them 
+--Microsoft.Owin.Hosting and Microsoft.Owin.Host.HttpListener. Between these two libraries, our application can now 
+--act as its own host, and listen for HTTP requests over a port specified when the application starts up.
+-- this package will add following libraries
+--Microsoft.Owin
+--Microsoft.Owin.Host.HttpListner
+--Microsoft.Owin.Hosting
+--Newtonsoft.Json
+--Owin
+
+Install-Package Swashbuckle.Core
+--Above package will help in generating the documentation of api
+-- this package will add following libraries
+--Swashbuckle.Core
+
+Install-Package Microsoft.Owin.Security.Jwt
+--The package “Microsoft.Owin.Security.Jwt” is responsible for protecting the Resource server resources using JWT, it only validate and de-serialize JWT tokens.
