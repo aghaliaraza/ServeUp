@@ -68,7 +68,7 @@ namespace ServeUpApiServer
         private void ConfigureOAuthTokenConsumption(IAppBuilder app)
         {
 
-            var issuer = ConfigurationManager.AppSettings["AuthorizationServer"];
+            var issuer = ConfigurationManager.AppSettings["AuthorizationServerURL"];
             string audienceId = ConfigurationManager.AppSettings["as:AudienceId"];
             byte[] audienceSecret = TextEncodings.Base64Url.Decode(ConfigurationManager.AppSettings["as:AudienceSecret"]);
 

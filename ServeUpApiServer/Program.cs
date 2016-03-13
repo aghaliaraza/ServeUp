@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -12,7 +13,7 @@ namespace ServeUpApiServer
     {
         static void Main(string[] args)
         {
-            string baseUri = "http://localhost:9090";
+            string baseUri = ConfigurationManager.AppSettings["ApiServerURL"];
 
             Console.WriteLine("Starting ServeUpApiPlatform...");
             using (WebApp.Start<Startup>(baseUri))
