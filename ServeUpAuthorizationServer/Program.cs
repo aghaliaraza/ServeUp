@@ -12,7 +12,7 @@ namespace ServeUpAuthorizationServer
     {
         static void Main(string[] args)
         {
-            string baseUri = ConfigurationManager.AppSettings["ServerURL"];
+            string baseUri = ConfigurationManager.AppSettings["AuthorizationServerURL"];
 
             Console.WriteLine("Starting ServeUpAuthorizationServer...");
             using (WebApp.Start<Startup>(baseUri))

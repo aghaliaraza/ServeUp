@@ -36,7 +36,7 @@ namespace ServeUpAuthorizationServer
                 TokenEndpointPath = new PathString("/OAuth2/Token"),
                 AccessTokenExpireTimeSpan = TimeSpan.FromMinutes(30), //TimeSpan.FromDays(14),
                 Provider = new OAuthServerProvider(),
-                AccessTokenFormat = new CustomJwtFormat(ConfigurationManager.AppSettings["ServerURL"]),
+                AccessTokenFormat = new CustomJwtFormat(ConfigurationManager.AppSettings["AuthorizationServerURL"]),
 
                 //For Dev enviroment only (on production should be AllowInsecureHttp = false)
                 AllowInsecureHttp = true
