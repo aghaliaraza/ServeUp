@@ -97,7 +97,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controlers\CompaniesController.cs" />
+    <Compile Include="Controlers\Telco\BalanceCardController.cs" />
+    <Compile Include="Controlers\Telco\CustomerProfileController.cs" />
+    <Compile Include="Controlers\Telco\ServicesCardController.cs" />
     <Compile Include="Models\Company.cs" />
+    <Compile Include="Models\Telco\Address.cs" />
+    <Compile Include="Models\Telco\BalanceCard.cs" />
+    <Compile Include="Models\Telco\CustomerProfile.cs" />
+    <Compile Include="Models\Telco\PricePlanCard.cs" />
+    <Compile Include="Models\Telco\ServiceCard.cs" />
+    <Compile Include="Models\Telco\SocialProfile.cs" />
+    <Compile Include="Models\Telco\TopUpUsage.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -109,6 +119,7 @@
   <ItemGroup>
     <Content Include="PackageInstallInstructions.txt" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

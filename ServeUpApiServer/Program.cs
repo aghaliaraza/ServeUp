@@ -13,6 +13,7 @@ namespace ServeUpApiServer
     {
         static void Main(string[] args)
         {
+            
             string baseUri = ConfigurationManager.AppSettings["ApiServerURL"];
 
             Console.WriteLine("Starting ServeUpApiPlatform...");

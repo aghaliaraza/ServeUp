@@ -33,6 +33,7 @@ namespace ServeUpApiServer
                 "DefaultApi",
                 "api/{controller}/{id}",
                 new { id = RouteParameter.Optional });
+            config.MapHttpAttributeRoutes();
         }
 
 
@@ -41,7 +42,7 @@ namespace ServeUpApiServer
             config.EnableSwagger(c =>
             {
                 c.IncludeXmlComments(GetXmlCommentsPath());
-                c.SingleApiVersion("1.0", "Owin Swashbuckle Demo");
+                c.SingleApiVersion("v1", "ServeUpApi");
             }).EnableSwaggerUi();
 
 
