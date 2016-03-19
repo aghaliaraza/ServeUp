@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Http;
 using Microsoft.AspNet.WebApi.Extensions.Compression.Server;
+using Microsoft.AspNet.WebApi.Extensions.Compression.Server.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.DataHandler.Encoder;
 using Microsoft.Owin.Security.Jwt;
@@ -28,7 +29,8 @@ namespace ServeUpApiServer
             ConfigureWebApiDocumentation(webApiConfiguration);            
             // Use the extension method provided by the WebApi.Owin library:                       
             app.UseWebApi(webApiConfiguration);
-            webApiConfiguration.MessageHandlers.Insert(0, new ServerCompressionHandler(new GZipCompressor(), new DeflateCompressor()));
+            //webApiConfiguration.MessageHandlers.Insert(0, new ServerCompressionHandler(new GZipCompressor(), new DeflateCompressor()));
+            //webApiConfiguration.MessageHandlers.Insert(0, new OwinServerCompressionHandler(new GZipCompressor(), new DeflateCompressor()));
         }
 
         private void ConfigureWebApi(HttpConfiguration config)
