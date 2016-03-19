@@ -18,3 +18,11 @@ Install-Package Swashbuckle.Core
 
 Install-Package Microsoft.Owin.Security.Jwt
 --The package “Microsoft.Owin.Security.Jwt” is responsible for protecting the Resource server resources using JWT, it only validate and de-serialize JWT tokens.
+
+
+
+Install-Package Microsoft.AspNet.WebApi.Extensions.Compression.Server.Owin
+--Above package will help in compression of requests
+--Microsoft.AspNet.WebApi.Extensions.Compression.Server
+--Microsoft.AspNet.WebApi.Extensions.Compression.Server.Owin
+--
