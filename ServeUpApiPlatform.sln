@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServeUpAuthorizationServer"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServeUpApiServer", "ServeUpApiServer\ServeUpApiServer.csproj", "{4DAE6C7B-649C-4BDE-BDD6-FBBD5DBEC3CF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServeUp.Data", "ServeUp.Data\ServeUp.Data.csproj", "{A29EB3DF-E7B0-48AD-8EC5-8214446EE9C2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{4DAE6C7B-649C-4BDE-BDD6-FBBD5DBEC3CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4DAE6C7B-649C-4BDE-BDD6-FBBD5DBEC3CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4DAE6C7B-649C-4BDE-BDD6-FBBD5DBEC3CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A29EB3DF-E7B0-48AD-8EC5-8214446EE9C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A29EB3DF-E7B0-48AD-8EC5-8214446EE9C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A29EB3DF-E7B0-48AD-8EC5-8214446EE9C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A29EB3DF-E7B0-48AD-8EC5-8214446EE9C2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

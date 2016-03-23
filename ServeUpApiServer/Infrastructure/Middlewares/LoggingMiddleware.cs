@@ -16,7 +16,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Owin;
 
-namespace ServeUpApiServer
+namespace ServeUpApiServer.Infrastructure.Middlewares
 {
     public class LoggingMiddleware : OwinMiddleware
     {
@@ -61,28 +61,28 @@ namespace ServeUpApiServer
             }
 
               buffer.Seek(0, SeekOrigin.Begin);
-              GZipStream gs = new GZipStream(buffer, CompressionMode.Decompress);
+              //GZipStream gs = new GZipStream(buffer, CompressionMode.Decompress);
             //DeflateStream gs = new DeflateStream(buffer, CompressionMode.Decompress);
-            //var sr = new StreamReader(buffer).ReadToEndAsync().Result;
+            var sr = new StreamReader(buffer).ReadToEndAsync().Result;
             //string responseBody = string.Empty;
             //responseBody = sr.ReadToEnd();
 
-            var sr  = new StreamReader(gs);
+            //var sr  = new StreamReader(gs);
 
 
             ////var sr = new StreamReader(buffer).ReadToEndAsync().Result;
 
-            string responseBody = string.Empty;
+            //string responseBody = string.Empty;
 
-            //if (!sr.EndOfStream)
-            try
-            {
-                responseBody = sr.ReadToEnd();
-            }
-            catch (Exception ex)
-            {
+            ////if (!sr.EndOfStream)
+            //try
+            //{
+            //    responseBody = sr.ReadToEnd();
+            //}
+            //catch (Exception ex)
+            //{
 
-            }
+            //}
 
 
             buffer.Seek(0, SeekOrigin.Begin);
@@ -94,7 +94,7 @@ namespace ServeUpApiServer
             
 
             
-            var json = JObject.Parse(responseBody);
+            //var json = JObject.Parse(responseBody);
 
             var RespHeaders = JsonConvert.SerializeObject(context.Response.Headers);            
             var ResultCode = context.Response.StatusCode;

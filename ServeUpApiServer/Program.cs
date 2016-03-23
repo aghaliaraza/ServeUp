@@ -13,7 +13,11 @@ namespace ServeUpApiServer
     {
         static void Main(string[] args)
         {
-            
+
+            //ServeUp.Data.Class1 c = new ServeUp.Data.Class1();
+            ServeUp.Data.Class2 c = new ServeUp.Data.Class2();
+
+
             string baseUri = ConfigurationManager.AppSettings["ApiServerURL"];
 
             Console.WriteLine("Starting ServeUpApiPlatform...");

@@ -41,7 +41,7 @@ namespace ServeUpAuthorizationServer.OAuthServer
             }
 
             context.Validated();
-            await Task.FromResult<object>(null);
+            //await Task.FromResult<object>(null);
         }
 
 

@@ -77,6 +77,10 @@
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="SchwabenCode.AsyncAll, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AsyncAll.1.0.1.0\lib\net40\SchwabenCode.AsyncAll.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Swashbuckle.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cd1bb07a5ac7c7bc, processorArchitecture=MSIL">
       <HintPath>..\packages\Swashbuckle.Core.5.3.2\lib\net40\Swashbuckle.Core.dll</HintPath>
       <Private>True</Private>
@@ -117,7 +121,15 @@
     <Compile Include="Controlers\Telco\BalanceCardController.cs" />
     <Compile Include="Controlers\Telco\CustomerProfileController.cs" />
     <Compile Include="Controlers\Telco\ServicesCardController.cs" />
-    <Compile Include="LoggingMiddleware.cs" />
+    <Compile Include="Infrastructure\ApiCall.cs" />
+    <Compile Include="Infrastructure\Middlewares\ITrackingStore.cs" />
+    <Compile Include="Infrastructure\Middlewares\LoggingMiddleware.cs" />
+    <Compile Include="Infrastructure\Middlewares\GlobalExceptionMiddleware.cs" />
+    <Compile Include="Infrastructure\Middlewares\TrackingBuilderExtension.cs" />
+    <Compile Include="Infrastructure\Middlewares\TrackingMiddleware.cs" />
+    <Compile Include="Infrastructure\Middlewares\TrackingStore.cs" />
+    <Compile Include="Infrastructure\Middlewares\WebApiMiddlewareConfigurations.cs" />
+    <Compile Include="Infrastructure\Middlewares\TrackingOptions.cs" />
     <Compile Include="Models\Company.cs" />
     <Compile Include="Models\Telco\Address.cs" />
     <Compile Include="Models\Telco\BalanceCard.cs" />
@@ -136,9 +148,15 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Instructions.txt" />
     <Content Include="PackageInstallInstructions.txt" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\ServeUp.Data\ServeUp.Data.csproj">
+      <Project>{a29eb3df-e7b0-48ad-8ec5-8214446ee9c2}</Project>
+      <Name>ServeUp.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

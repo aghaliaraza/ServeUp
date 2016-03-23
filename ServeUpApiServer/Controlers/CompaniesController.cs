@@ -55,7 +55,7 @@ namespace ServeUpApiServer.Controlers
             return Ok();
         }
 
-
+        
         public async Task<IHttpActionResult> Put(Company company)
         {
             if (company == null)

@@ -8,6 +8,11 @@ using System.Threading.Tasks;
 
 namespace ServeUpApiServer
 {
+    /// <summary>
+    /// A class to wrap a stream for interception purposes
+    /// and recording the number of bytes written to or read from
+    /// the wrapped stream.
+    /// </summary>
     public class ContentStream : Stream
     {
         protected readonly Stream buffer_;
@@ -15,6 +20,11 @@ namespace ServeUpApiServer
 
         private long contentLength_ = 0L;
 
+        /// <summary>
+        /// Initialize a new instance of the <see cref="ContentStream"/> class.
+        /// </summary>
+        /// <param name="buffer"></param>
+        /// <param name="stream"></param>
         public ContentStream(Stream buffer, Stream stream)
         {
             buffer_ = buffer;
@@ -29,51 +39,20 @@ namespace ServeUpApiServer
             get { return contentLength_; }
         }
 
-        public override bool CanRead
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public override bool CanSeek
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public override bool CanWrite
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public override long Length
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public override long Position
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
-
+        /// <summary>
+        /// Reads the content of the stream as a string.
+        /// 
+        /// If the contentType is not specified (null) or does not
+        /// refer to a string, this function returns the content type
+        /// followed by the number of bytes in the response.
+        /// 
+        /// If the contentType is one of the following values, the
+        /// resulting content is decoded as a string and truncated to
+        /// the maximum count specified.
+        /// </summary>
+        /// <param name="contentType">HTTP header content type.</param>
+        /// <param name="maxCount">Max number of bytes returned from the stream.</param>
+        /// <returns></returns>
         public async Task<String> ReadContentAsync(string contentType, long maxCount)
         {
             if (!IsTextContentType(contentType))
@@ -132,14 +111,43 @@ namespace ServeUpApiServer
                 return Encoding.UTF8;
             }
         }
- 
-    #endregion
- 
-    #region System.IO.Stream Overrides
- 
-    
- 
-    public override int Read(byte[] buffer, int offset, int count)
+
+        #endregion
+
+        #region System.IO.Stream Overrides
+
+        public override bool CanRead
+        {
+            get { return stream_.CanRead; }
+        }
+
+        public override bool CanSeek
+        {
+            get { return stream_.CanSeek; }
+        }
+
+        public override bool CanWrite
+        {
+            get { return stream_.CanWrite; }
+        }
+
+        public override void Flush()
+        {
+            stream_.Flush();
+        }
+
+        public override long Length
+        {
+            get { return stream_.Length; }
+        }
+
+        public override long Position
+        {
+            get { return stream_.Position; }
+            set { stream_.Position = value; }
+        }
+
+        public override int Read(byte[] buffer, int offset, int count)
         {
             // read content from the request stream
 
@@ -152,6 +160,16 @@ namespace ServeUpApiServer
                 WriteContent(buffer, offset, count);
 
             return count;
+        }
+
+        public override long Seek(long offset, SeekOrigin origin)
+        {
+            return stream_.Seek(offset, origin);
+        }
+
+        public override void SetLength(long value)
+        {
+            stream_.SetLength(value);
         }
 
         public override void Write(byte[] buffer, int offset, int count)
@@ -174,24 +192,6 @@ namespace ServeUpApiServer
         protected override void Dispose(bool disposing)
         {
             buffer_.Dispose();
-
-            // not disposing the stream_ member
-            // which is owned by the Owin infrastructure
-        }
-
-        public override void Flush()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override long Seek(long offset, SeekOrigin origin)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void SetLength(long value)
-        {
-            throw new NotImplementedException();
         }
 
         #endregion
