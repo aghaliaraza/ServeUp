@@ -9,7 +9,7 @@ namespace ServeUp.Data
 {
     public interface IRepository<TEntity> where TEntity : EntityBase
     {
-        Task Insert(TEntity entity);
+        Task Insert(TEntity entity); 
         Task Update(TEntity entity);
         Task Delete(TEntity entity);
         IList<TEntity> SearchFor(Expression<Func<TEntity, bool>> predicate);
